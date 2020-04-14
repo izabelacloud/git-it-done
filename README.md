@@ -1,4 +1,4 @@
-# git-it-done
+# Git It Done
 
 This page represents the a Git It Done application that shall pull the data from GitHub using open source APIs. 
 
