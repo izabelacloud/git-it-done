@@ -2,16 +2,19 @@ var issueContainerEl = document.querySelector("#issues-container");
 // console.log(issueContainerEl);
 var limitWarningEl = document.querySelector("#limit-warning");
 // console.log(limitWarningEl);
-// var issues = 0;
+var issues = 0;
+var repoNameEl = document.querySelector("#repo-name");
 
 
-//adding new function
-// var getRepoName = function() {
-// var queryString = document.location.search;
-// var repoName = queryString.split("=")[1];
-// console.log(repoName);
+// adding new function
+var getRepoName = function() {
+var queryString = document.location.search;
+var repoName = queryString.split("=")[1];
+console.log(repoName);
+getRepoIssues(repoName);
+repoNameEl.textContent = repoName;
 
-// }
+}
 
 
 var getRepoIssues = function(repo) {
@@ -97,6 +100,6 @@ var displayWarning = function(repo) {
 
 
 
-getRepoIssues("facebook/react");
+// getRepoIssues("facebook/react");
 // getRepoIssues();
-// getRepoName();
+getRepoName();
