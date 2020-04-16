@@ -3,7 +3,7 @@ var nameInputEl = document.querySelector("#username");
 //added these variables below for the right hand side table to get the element id
 var repoContainerEl = document.querySelector("#repos-container");
 var repoSearchTerm = document.querySelector("#repo-search-term");
-var languageButtonsEl = document.querySelector("[data-language]")
+var languageButtonsEl = document.querySelector("#language-buttons")
 
 
 
