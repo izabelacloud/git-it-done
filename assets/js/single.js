@@ -8,11 +8,20 @@ var repoNameEl = document.querySelector("#repo-name");
 
 // adding new function
 var getRepoName = function() {
+  //grab repo name from url query string
 var queryString = document.location.search;
 var repoName = queryString.split("=")[1];
 console.log(repoName);
+
+if (repoName) {
+  // display repo name on the page
 getRepoIssues(repoName);
 repoNameEl.textContent = repoName;
+} else {
+  // if no repo was given, redirect to the homepage
+  document.location.replace("./index.html");
+}
+
 
 }
 
@@ -21,25 +30,26 @@ var getRepoIssues = function(repo) {
     console.log(repo);
 
     var apiUrl = "https://api.github.com/repos/" + repo + "/issues?direction=asc";
-
+    // make a get request to url
     fetch(apiUrl).then(function(response) {
         //if request was successful
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data);
-
-                //check if API has paginated issues
-                if (response.headers.get(displayWarning(repo))) {
-                console.log("Repo has more than 30 issues")
-
-                }
+                // console.log(data);
                 //call displayIssues method
                 displayIssues(data);
                 console.log(displayIssues);
+
+                //check if API has paginated issues
+                if (response.headers.get("Link")) {
+                console.log("Repo has more than 30 issues")
+                displayWarning(repo);
+                }
             })
         }
         else {
-            alert("There was a problem with your request!")
+            // alert("There was a problem with your request!")
+            document.location.replace("./index.html")
         }
     })
 };
