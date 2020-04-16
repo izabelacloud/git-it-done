@@ -30,28 +30,24 @@ var getRepoIssues = function(repo) {
     console.log(repo);
 
     var apiUrl = "https://api.github.com/repos/" + repo + "/issues?direction=asc";
+
     // make a get request to url
     fetch(apiUrl).then(function(response) {
-        //if request was successful
-        if (response.ok) {
-            response.json().then(function(data) {
-                // console.log(data);
-                //call displayIssues method
-                displayIssues(data);
-                console.log(displayIssues);
+      // request was successful
+      if (response.ok) {
+        response.json().then(function(data) {
+          displayIssues(data);
 
-                //check if API has paginated issues
-                if (response.headers.get("Link")) {
-                console.log("Repo has more than 30 issues")
-                displayWarning(repo);
-                }
-            })
-        }
-        else {
-            // alert("There was a problem with your request!")
-            document.location.replace("./index.html")
-        }
-    })
+          // check if api has paginated issues
+          if (response.headers.get("Link")) {
+            displayWarning(repo);
+          }
+        });
+      } else {
+        // if not successful, redirect to homepage
+        document.location.replace("./index.html");
+      }
+    });
 };
 
 
