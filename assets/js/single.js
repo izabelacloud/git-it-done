@@ -5,6 +5,15 @@ var limitWarningEl = document.querySelector("#limit-warning");
 // var issues = 0;
 
 
+//adding new function
+// var getRepoName = function() {
+// var queryString = document.location.search;
+// var repoName = queryString.split("=")[1];
+// console.log(repoName);
+
+// }
+
+
 var getRepoIssues = function(repo) {
     console.log(repo);
 
@@ -89,3 +98,5 @@ var displayWarning = function(repo) {
 
 
 getRepoIssues("facebook/react");
+// getRepoIssues();
+// getRepoName();
